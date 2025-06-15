@@ -1,0 +1,153 @@
+<h3 class="text-center">Let's Learn Directives</h3>
+<hr />
+
+<div class="p-2 m-2 border">
+  <div>
+    Enter a Number To check if it is even/Odd
+    <input type="number" [(ngModel)]="num">
+  </div>
+  <h4>if and else Before Angular-17</h4>
+  <div *ngIf="num%2==0">{{num}} is Even</div>
+  <div *ngIf="num%2!==0">{{num}} is Odd</div>
+
+  <h4>if and else After Angular-17</h4>
+  @if(num%2==0){
+  <div>{{num}} is Even</div>
+  } @else{
+  <div>{{num}} is Odd</div>
+  }
+</div>
+
+<div class="p-2 m-2 border">
+  <h4>if Vs hidden</h4>
+  @if(num%2==0){
+  <div>{{num}} is Even</div>
+  } @else{
+  <div>{{num}} is Odd From Else Block</div>
+  }
+
+  <div [hidden]="num%2!==0">{{num}} is Even</div>
+  <div [hidden]="num%2==0">{{num}} is Odd From Hidden</div>
+</div>
+
+<div class="p-2 m-2 border">
+  <h4>Switch case</h4>
+  <div>
+    Enter a number between 1-7:
+    <input type="number" [(ngModel)]="dayNum">
+    @switch (dayNum) {
+    @case (1) { <h4>Monday</h4> }
+    @case (2) { <h4>Tuesday</h4> }
+    @case (3) { <h4>Wednesday</h4> }
+    @case (4) { <h4>Thursday</h4> }
+    @case (5) { <h4>Friday</h4> }
+    @case (6) { <h4>Saturday</h4> }
+    @case (7) { <h4>Sunday</h4> }
+    @default { <h4>Not a Valid number</h4> }
+    }
+  </div>
+</div>
+
+<div class="p-2 m-2 border">
+  <h4>For Loop</h4>
+
+  <div>Use for loop to display statenames in a dropdown</div>
+  <select>
+    @for(state of stateNames;track $index){
+    <option>{{state}}</option>
+    }
+  </select>
+
+  <div>Use for loop to display statenames in a datalist</div>
+  <input list="countries">
+  <datalist id="countries">
+    @for(country of country_list;track $index){
+    <option>{{country}}</option>
+    }
+  </datalist>
+
+  <div>Use for loop to display Data in table</div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>eId</th>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Salary</th>
+        <th>is First?</th>
+        <th>is Last?</th>
+        <th>is Even?</th>
+        <th>is Odd?</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(emp of employees;track $index){
+      <tr>
+        <td>{{$index + 1}}</td>
+        <td>{{emp.eId}}</td>
+        <td>{{emp.name}}</td>
+        <td>{{emp.gender}}</td>
+        <td>{{emp.sal}}</td>
+        <td>{{$first}}</td>
+        <td>{{$last}}</td>
+        <td>{{$even}}</td>
+        <td>{{$odd}}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="border p-2 m-2">
+  <div>ngStyle is used to apply some style conditionally</div>
+
+  <p [style.color]="num % 2 == 0 ? 'blue' : 'red'"> {{num}} is {{num % 2 == 0 ? 'Even' : 'Odd'}} </p>
+  <p [style.fontSize.px]="num % 2 == 0 ? 48 : 16"> Add style with unit </p>
+  <p [style.background-color]=" num % 2 == 0?'green':'blue' "> Add style conditionally </p>
+  <p [ngStyle]=" num % 2 == 0 ? myStyle1 : myStyle2"> NgStyle for multiple values </p>
+  <p [ngStyle]="myStyles()"> NgStyle for multiple values </p>
+</div>
+
+<div class="border p-2 m-2">
+  <div>ngClass is used to apply css classes conditionally</div>
+  <button class="btn btn-primary" (click)="flag=!flag">Change Flag- {{flag}}</button>
+
+  <p [class.myClass]='flag'> Add a class to an element </p>
+  <p [ngClass]="myClasses"> Add Multiple classes to an element </p>
+  <button class="btn" [ngClass]="flag ? 'btn-success' : 'btn-danger'">
+    Class Binding example
+  </button>
+</div>
+
+
+<div class="border p-2 m-2">
+  <div>ng template</div>
+  <div *ngIf="flag; else elseBlock">
+    Flag value is true
+  </div>
+  <ng-template #elseBlock>
+    Flag value is false
+  </ng-template>
+
+  <!-- <ng-container *ngFor="let item of items;">
+    <div *ngIf="flag">
+      Flag value is true
+    </div>
+  </ng-container> -->
+</div>
+
+<div class="border p-2 m-2">
+  <div>example of ng-content</div>
+  <ng-content></ng-content>
+</div>
+
+<div class="border p-2 m-2">
+  <div>Let's Create a Custom Directive (Numberonly)</div>
+  <input appNumberonly /> 
+  <!-- numbers: green , no number : red -->
+</div>
+<div class="border p-2 m-2">
+  <div>Let's Create a Custom Directive (HighLight)</div>
+  <h3 appHighlight>Hover over this Element To see the highlight effect</h3>
+</div>

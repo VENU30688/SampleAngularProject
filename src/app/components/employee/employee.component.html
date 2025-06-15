@@ -1,0 +1,33 @@
+<div style="margin: 20px;">
+<label for="filter">Filter: </label>
+<select id="filter" [(ngModel)]="selecfilter" (change)="onFilterChange()">
+    <option value="all">All Employees</option>
+    <option value="male">Male Employees</option>
+    <option value="female">Female Employees</option>
+</select>
+<table border="1" style="margin-top: 20px; width: 100%;">
+    <thead>
+ <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Gender</th>        
+      </tr>
+    </thead>
+<tbody>
+
+    @for(emp of employees;track $index){
+      <!-- <tr *ngFor="let emp of employees"> -->
+      <tr>
+        <td>{{ emp.id }}</td>
+        <td>{{ emp.name }}</td>
+         <td>{{ emp.sal }}</td>
+        <td>{{ emp.gender }}</td>       
+      </tr>
+      }
+   
+
+</tbody>
+</table>
+
+</div>

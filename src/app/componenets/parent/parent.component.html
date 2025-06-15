@@ -1,0 +1,12 @@
+<div class="border border-5 rounded rounded-5 p-2 m-2 container text-center">
+    <h4>This is parent Component</h4>
+    <div>My own value is {{a}}</div>
+    <div class="row">
+        <div class="col-sm-6">
+            <app-child1 [a]="a"></app-child1>
+        </div>
+        <div class="col-sm-6">
+            <app-child2></app-child2>
+        </div>
+    </div>
+</div>

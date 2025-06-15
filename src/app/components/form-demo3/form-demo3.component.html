@@ -1,0 +1,25 @@
+<div class="container">
+<div class="row">
+  <div class="col-sm-4 offset-4 border border-3 rounded-2 p-3">
+    <h4>Model Driven Form</h4>
+
+    <form [formGroup]="userForm">
+        <p>Name: <input fromcontrolname="name"></p>
+        <p>Age: <input fromcontrolname="age"></p>
+        <p>Email: <input fromcontrolname="email"></p>
+
+        <div formGroupName="address">
+             <p>Street: <input fromcontrolname="street"></p>
+        <p>City: <input fromcontrolname="city"></p>
+        <p>Pincode: <input fromcontrolname="Pincode"></p>
+
+        </div>
+<div>
+    <div>Form Data:</div>
+   <pre>{{userForm.value | json}}</pre>
+</div>
+    </form>
+
+  </div>
+</div>
+</div>
